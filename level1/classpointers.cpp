@@ -29,7 +29,7 @@ int main()
 	box b2(3,4,5);
 	box *boxptr;
 
-	boxptr=&b1;
+	// boxptr=&b1;
 	cout<<"volume of first box is "<<boxptr->volume()<<endl;
 
 	boxptr=&b2;

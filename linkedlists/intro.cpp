@@ -9,7 +9,7 @@ class box
 
 	public:
 		int l,b,h;
-		box(int l1,int b1,int h1)
+		box(int l1=1,int b1=1,int h1=1)
 		{
 			l=l1;
 			b=b1;
@@ -20,46 +20,44 @@ class box
 		{
 			return l*b*h;
 		}
-
-		box* next;
-
+		box *next;
 };
 
+void printlist(box* head)
+	{
+		while(head!=NULL)
+		{
+			cout<<"volume of box is "<<head->volume()<<endl;	
+			head=head->next;
+		}
+	}
 
 int main()
 {
-	cout<<"pointers to classes**********\n";
+	cout<<"linked lists**********\n";
 	box b1(1,2,3);
 	box b2(3,4,5);
-
-	box* head=&b1;
-	box* first;
-	first=b1->next;
+	b1.next=&b2;
+	box* head= new box(1,2,3);
+	box* second= new box(4,5,6);
+	box* third= new box(7,8,9);
 	
-	// box* second;
-	// box* third;
+	head->next=second;
+	second->next=third;
+	third->next=NULL;
 
-	// first->l=2;
-	// first->b=4;
-	// first->h=3;
-
-	// second->l=3;
-	// second->b=4;
-	// second->h=5;
-
-	// third->l=6;
-	// third->b=7;
-	// third->h=8;
-
-	// head->next=first;
-	// first->next=second;
-	// second->next=third;
-	// third->next=NULL;
-	// cout<<head->volume();
+	printlist(head);
+	
 
 	
 
+	
+	// cout<<"volume of second box is "<<head->volume()<<endl;
 
+	
+	// cout<<"volume of third box is "<<head->volume()<<endl;
+
+	
 
 	return 0;
 }
