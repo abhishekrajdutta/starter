@@ -75,6 +75,36 @@ void numDeletion(struct Node **head_ref, int delData)
 
 }
 
+void deleteNode(struct Node **head_ref, int key)
+{
+    // Store head node
+     Node* temp = *head_ref, *prev;
+ 
+    // If head node itself holds the key to be deleted
+    if (temp != NULL && temp->data == key)
+    {
+        *head_ref = temp->next;   // Changed head
+        free(temp);               // free old head
+        return;
+    }
+ 
+    // Search for the key to be deleted, keep track of the
+    // previous node as we need to change 'prev->next'
+    while (temp != NULL && temp->data != key)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+ 
+    // If key was not present in linked list
+    if (temp == NULL) return;
+ 
+    // Unlink the node from linked list
+    prev->next = temp->next;
+ 
+    free(temp);  // Free memory
+}
+
 void swap(struct Node** head_ref, int a, int b)
 {
   struct Node *indexa=*head_ref,*indexb=*head_ref,*preva=NULL,*prevb=NULL,*temp=(struct Node*)malloc(sizeof(struct Node));
@@ -162,13 +192,14 @@ int main()
   lInsert(&head,5);
   printList(head);
   printf("\n deletion\n");
-  numDeletion(&head,100);
+  // numDeletion(&head,3);
+  deleteNode(&head,3);
   printList(head);
-  printf("\n swap\n");
-  swap(&head,3,5);
-  printList(head);
-  printf("\n reverse\n");
-  reverse(&head);
-  printList(head);
+  // printf("\n swap\n");
+  // swap(&head,3,5);
+  // printList(head);
+  // printf("\n reverse\n");
+  // reverse(&head);
+  // printList(head);
   return 0;
 }

@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+using namespace std;
+
 struct node
 {
 	int key;
@@ -38,6 +40,24 @@ void inorder(struct node *ref)
 	}
 }
 
+void preorder(struct node *ref)
+{
+	if (ref==NULL)
+		return;
+    printf("%d \n", ref->key);
+	preorder(ref->left);
+    preorder(ref->right);
+}
+
+void postorder(struct node *ref)
+{
+	if (ref==NULL)
+		return;
+	postorder(ref->left);
+    postorder(ref->right);
+    printf("%d \n", ref->key);
+}
+
 struct node* search(struct node *ref, int data)
 {
 	if (ref!=NULL)
@@ -55,6 +75,12 @@ struct node* search(struct node *ref, int data)
 
 int main()
 {
+	/* Let us create following BST
+              50
+           /     \
+          30      70
+         /  \    /  \
+       20   40  60   80 */
 	struct node *root=NULL;
 	struct node *searched=NULL;
 	root = insert(root, 50);
@@ -65,6 +91,14 @@ int main()
     insert(root, 60);
     insert(root, 80);
     inorder(root);
-    search(root,60);
+    // search(root,60);
+    cout<<endl;
+    // cout<<root->left->left->key;
+    preorder(root);
+
+    cout<<endl;
+    cout<<endl;
+
+	postorder(root);
 	return 0;
 }
