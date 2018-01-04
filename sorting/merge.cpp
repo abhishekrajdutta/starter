@@ -34,7 +34,7 @@ void merger(int arr[],int temp[], int l,int m,int r)
 		{
 			temp[i]=arr[second];
 			second++;		
-			cout<<temp[0];
+			
 		}
 		
 		else if (first>m)
@@ -51,9 +51,9 @@ void merger(int arr[],int temp[], int l,int m,int r)
 	for (int i=l;i<=r;i++)
 	{
 		arr[i]=temp[i];
-		cout<<temp[i];
+		// cout<<temp[i];
 	}
-	cout<<"\nmerged\n";
+	// cout<<"\nmerged\n";
 	
 
 }

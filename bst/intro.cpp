@@ -10,7 +10,7 @@ struct node
 	struct node *left, *right;
 };
 
-struct node *makenode(int num)
+node *makenode(int num)
 {
 	struct node *temp=(struct node *)malloc(sizeof(struct node));
 	temp->key=num;
@@ -19,7 +19,7 @@ struct node *makenode(int num)
 	return temp;
 }
 
-struct node* insert(struct node *ref, int data)
+node* insert(struct node *ref, int data)
 {
 	if (ref==NULL)
 		return makenode(data);
@@ -58,7 +58,7 @@ void postorder(struct node *ref)
     printf("%d \n", ref->key);
 }
 
-struct node* search(struct node *ref, int data)
+node* search(struct node *ref, int data)
 {
 	if (ref!=NULL)
 	{
@@ -81,8 +81,8 @@ int main()
           30      70
          /  \    /  \
        20   40  60   80 */
-	struct node *root=NULL;
-	struct node *searched=NULL;
+	 node *root=NULL;
+	// struct node *searched=NULL;
 	root = insert(root, 50);
     insert(root, 30);
     insert(root, 20);
